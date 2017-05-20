@@ -9,7 +9,7 @@
     <context:property-placeholder
         location="classpath*:META-INF/spring/*.properties" />
 
-    <context:component-scan base-package="ik.am.jpetstore.domain" />
+    <context:component-scan base-package="com.hellojd.jpetstore.domain" />
     <tx:annotation-driven />
 
     <import resource="classpath:META-INF/spring/spring-jpetstore-infra.xml" />

@@ -19,14 +19,14 @@
         </mvc:argument-resolvers>
     </mvc:annotation-driven>
     <bean
-        class="ik.am.jpetstore.app.common.session.EnableSynchronizeOnSessionPostProcessor" />
+        class="com.hellojd.jpetstore.app.common.session.EnableSynchronizeOnSessionPostProcessor" />
 
-    <bean id="cart" class="ik.am.jpetstore.domain.model.Cart"
+    <bean id="cart" class="com.hellojd.jpetstore.domain.model.Cart"
         scope="session">
         <aop:scoped-proxy />
     </bean>
 
-    <context:component-scan base-package="ik.am.jpetstore.app" />
+    <context:component-scan base-package="com.hellojd.jpetstore.app" />
 
     <mvc:resources mapping="/resources/**"
         location="/resources/,classpath:META-INF/resources/"

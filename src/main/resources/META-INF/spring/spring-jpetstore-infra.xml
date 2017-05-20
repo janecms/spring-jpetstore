@@ -13,12 +13,12 @@
     <!-- define the SqlSessionFactory -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
-        <property name="typeAliasesPackage" value="ik.am.jpetstore.domain.model" />
+        <property name="typeAliasesPackage" value="com.hellojd.jpetstore.domain.model" />
     </bean>
 
     <!-- scan for mappers and let them be autowired -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="ik.am.jpetstore.domain.repository" />
+        <property name="basePackage" value="com.hellojd.jpetstore.domain.repository" />
     </bean>
 
 </beans>
