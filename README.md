@@ -1,8 +1,16 @@
-spring-jpetstore
-================
-fock from ![spring-jpetstore](https://github.com/making/spring-jpetstore)
-JPetStore 6 is a full web application built on top of Spring, Spring MVC, MyBatis 3, and Spring Security. 
-This is another implementation of MyBatis sample application (https://github.com/mybatis/jpetstore-6).
+# spring-jpetstore
 
-Original application is available for downloading in the downloads section of MyBatis project site. 
-In this section we will walk through this sample to understand how is it built and learn how to run it.
+================
+
+fock from [spring-jpetstore](https://github.com/making/spring-jpetstore)
+
+## 说明文档
+[docs](http://www.mybatis.org/jpetstore-6/)
+
+## 技术选型
+- Spring MVC, 
+- MyBatis 3
+- Spring Security
+
+================
+
