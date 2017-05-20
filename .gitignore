@@ -1,0 +1,16 @@
+log
+target
+.settings
+.classpath
+.project
+.springBeans
+src/main/webapp/upload/*
+message
+mecab-ipadic*
+*~
+.git
+*.iml
+*.ipr
+*.iws
+.idea
+.DS_Store
