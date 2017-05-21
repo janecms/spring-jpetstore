@@ -206,14 +206,14 @@ body>#Search {
   float: left;
   background-color: #000;
   color: #fff;
-  line-height: 9ex;
+  line-height: 4ex;
   voice-family: "\"}\"";
   voice-family: inherit;
   height: 9ex;
 }
 
 body>#PoweredBy {
-  height: 9ex;
+  height: 4ex;
 }
 
 #Banner {
@@ -321,3 +321,5 @@ body>#Banner {
   background-color:#ccc;
   text-align:left;
 }
+
+#PoweredBy a{ color:white;}

@@ -1,6 +1,7 @@
 package com.hellojd.jpetstore.app.catalog;
 
 import java.util.List;
+import java.util.Locale;
 
 import com.hellojd.jpetstore.domain.model.Category;
 import com.hellojd.jpetstore.domain.model.Item;
@@ -8,22 +9,32 @@ import com.hellojd.jpetstore.domain.model.Product;
 import com.hellojd.jpetstore.domain.service.catalog.CatalogService;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.i18n.CookieLocaleResolver;
+import org.springframework.web.servlet.support.RequestContextUtils;
 
 @Controller
 @RequestMapping("catalog")
 public class CatalogController {
     @Inject
+    CookieLocaleResolver localeResolver;
+
+    @Inject
     protected CatalogService catalogService;
 
     @RequestMapping
-    public String main() {
+    public String main(String locale, HttpServletResponse response) {
+        this.localeResolver.addCookie(response,locale);
         return "catalog/Main";
     }
 

@@ -23,15 +23,17 @@
     </appender>
 
     <!-- Application Loggers -->
-    <logger name="ik.am.jpetstore">
+    <logger name="com.hellojd.jpetstore">
         <level value="debug" />
     </logger>
 
     <!-- 3rdparty Loggers -->
-    <logger name="org.springframework.core">
-        <level value="warn" />
+    <logger name="org.springframework.validation">
+        <level value="debug" />
     </logger>
-
+    <logger name="org.springframework.context">
+        <level value="debug" />
+    </logger>
     <logger name="org.springframework.beans">
         <level value="warn" />
     </logger>
@@ -67,7 +69,7 @@
     </logger>
 
     <root>
-        <level value="warn" />
+        <level value="debug" />
         <appender-ref ref="STDOUT" />
         <appender-ref ref="ROLLING" />
     </root>

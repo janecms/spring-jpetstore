@@ -51,7 +51,12 @@
         <property name="suffix" value=".jsp" />
         <property name="order" value="2" />
     </bean>
-
+    <bean id="localeResolver"
+                class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+        <property name="cookieName" value="locale"/>
+        <property name="defaultLocale" value="zh_CN"/>
+        <property name="cookieMaxAge" value="3600"/>
+    </bean>
     <!-- <bean -->
     <!-- class="org.springframework.web.servlet.view.tiles2.TilesViewResolver"> -->
     <!-- <property name="order" value="1" /> -->
@@ -69,18 +74,22 @@
         <property name="order" value="1" />
     </bean>
 
+    <mvc:interceptors>
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+    </mvc:interceptors>
+    
     <bean
         class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
         <property name="order" value="1" />
         <property name="exceptionMappings">
-            <util:map>
+            <map>
                 <entry key="ResourceNotFoundException" value="notFoundError" />
-            </util:map>
+            </map>
         </property>
         <property name="statusCodes">
-            <util:map>
+            <map>
                 <entry key="notFoundError" value="404" />
-            </util:map>
+            </map>
         </property>
         <property name="defaultStatusCode" value="500" />
         <property name="defaultErrorView" value="systemError" />

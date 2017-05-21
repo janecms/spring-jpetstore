@@ -1,11 +1,9 @@
 <%@ include file="../common/IncludeTop.jsp"%>
-
 <div id="Catalog">
     <form:form modelAttribute="accountForm"
         action="${pageContext.request.contextPath}/account/editAccount">
 
         <h3>User Information</h3>
-
         <table>
             <tr>
                 <td>User ID:</td>

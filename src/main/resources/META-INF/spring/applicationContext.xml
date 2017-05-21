@@ -11,11 +11,7 @@
 
     <bean id="messageSource"
         class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name="basenames">
-            <list>
-                <value>i18n/application-messages</value>
-            </list>
-        </property>
+        <property name="basename" value="classpath:i18n/application-messages"></property>
     </bean>
 
     <import resource="classpath:META-INF/spring/spring-jpetstore-domain.xml" />
