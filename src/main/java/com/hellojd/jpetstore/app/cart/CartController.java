@@ -5,6 +5,7 @@ import javax.inject.Inject;
 import com.hellojd.jpetstore.domain.model.Cart;
 import com.hellojd.jpetstore.domain.service.catalog.CatalogService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -20,7 +21,7 @@ public class CartController {
     @Inject
     protected CatalogService catalogService;
 
-    @Inject
+    @Autowired
     protected Cart cart;
 
     @ModelAttribute

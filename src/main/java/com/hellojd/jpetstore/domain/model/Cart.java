@@ -16,6 +16,10 @@
 
 package com.hellojd.jpetstore.domain.model;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Component;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -28,6 +32,8 @@ import java.util.Map;
 /**
  * @author Eduardo Macarron
  */
+@Scope(value="session",proxyMode= ScopedProxyMode.TARGET_CLASS)
+@Component
 public class Cart implements Serializable {
 
     private static final long serialVersionUID = 8329559983943337176L;
