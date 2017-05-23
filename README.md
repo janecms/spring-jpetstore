@@ -15,10 +15,25 @@ fock from [spring-jpetstore](https://github.com/making/spring-jpetstore)
 - Spring Security
 
 - logback
-
-
+## 数据库设计
+![jpetstore_database](docs/images/jpetstore_database.png)
+  > | table_name   | Description |
+  > | --------- | ----------- |
+  > | supplier  | 供应商|
+  > | signon  | 登录sso|
+  > | account  | 用户账户|
+  > | profile  | 用户设置|
+  > | bannerdata  | 签名页面底部|
+  > | orders  | 订单信息|
+  > | orderstatus  | 订单跟踪记录|
+  > | lineitem  | 订单子项|
+  > | category  | 产品目录|
+  > | product  | 产品基本信息|
+  > | item  | 产品扩展信息(购买单位)|
+  > | inventory  | 库存|
+  > | sequence  | order seq|
 ================
-## 分支
+## 分支介绍
 
 - master : mvc XML配置
 
