@@ -3,7 +3,7 @@ package com.hellojd.jpetstore.app.order;
 import javax.inject.Inject;
 
 import com.hellojd.jpetstore.domain.model.Account;
-import com.hellojd.jpetstore.domain.model.Cart;
+import com.hellojd.jpetstore.domain.model.ICart;
 import com.hellojd.jpetstore.domain.model.Order;
 import com.hellojd.jpetstore.domain.model.UserDetails;
 import com.hellojd.jpetstore.domain.service.order.OrderService;
@@ -20,7 +20,7 @@ public class OrderHelper {
     @Inject
     protected Mapper beanMapper;
 
-    public Order newOrder(OrderForm orderForm, Cart cart) {
+    public Order newOrder(OrderForm orderForm, ICart cart) {
         UserDetails userDetails = (UserDetails) SecurityContextHolder
                 .getContext().getAuthentication().getPrincipal();
         Account account = userDetails.getAccount();

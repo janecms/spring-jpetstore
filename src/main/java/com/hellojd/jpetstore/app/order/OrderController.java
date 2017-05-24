@@ -4,10 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import com.hellojd.jpetstore.domain.model.Account;
-import com.hellojd.jpetstore.domain.model.Cart;
-import com.hellojd.jpetstore.domain.model.Order;
-import com.hellojd.jpetstore.domain.model.UserDetails;
+import com.hellojd.jpetstore.domain.model.*;
 import com.hellojd.jpetstore.domain.service.order.OrderService;
 
 import javax.inject.Inject;
@@ -40,7 +37,7 @@ public class OrderController {
     protected Mapper beanMapper;
 
     @Inject
-    protected Cart cart;
+    protected ICart cart;
 
     static {
         List<String> cardList = new ArrayList<String>();

@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import com.hellojd.jpetstore.domain.model.Cart;
 import com.hellojd.jpetstore.domain.model.CartItem;
+import com.hellojd.jpetstore.domain.model.ICart;
 import com.hellojd.jpetstore.domain.model.Item;
 import com.hellojd.jpetstore.domain.service.catalog.CatalogService;
 
@@ -16,7 +17,7 @@ public class CartHelper {
     @Inject
     protected CatalogService catalogService;
 
-    public void addItemToCart(String workingItemId, Cart cart) {
+    public void addItemToCart(String workingItemId, ICart cart) {
         if (cart.containsItemId(workingItemId)) {
             cart.incrementQuantityByItemId(workingItemId);
         } else {
@@ -29,7 +30,7 @@ public class CartHelper {
         }
     }
 
-    public void updateCartQuantities(CartForm cartForm, Cart cart) {
+    public void updateCartQuantities(CartForm cartForm, ICart cart) {
         Iterator<CartItem> cartItems = cart.getAllCartItems();
         while (cartItems.hasNext()) {
             CartItem cartItem = (CartItem) cartItems.next();

@@ -28,7 +28,7 @@ import java.util.Map;
 /**
  * @author Eduardo Macarron
  */
-public class Cart implements Serializable {
+public class Cart implements ICart, Serializable  {
 
     private static final long serialVersionUID = 8329559983943337176L;
 
@@ -37,26 +37,32 @@ public class Cart implements Serializable {
 
     private final List<CartItem> itemList = new ArrayList<CartItem>();
 
+    @Override
     public Iterator<CartItem> getCartItems() {
         return itemList.iterator();
     }
 
+    @Override
     public List<CartItem> getCartItemList() {
         return itemList;
     }
 
+    @Override
     public int getNumberOfItems() {
         return itemList.size();
     }
 
+    @Override
     public Iterator<CartItem> getAllCartItems() {
         return itemList.iterator();
     }
 
+    @Override
     public boolean containsItemId(String itemId) {
         return itemMap.containsKey(itemId);
     }
 
+    @Override
     public void addItem(Item item, boolean isInStock) {
         CartItem cartItem = (CartItem) itemMap.get(item.getItemId());
         if (cartItem == null) {
@@ -70,6 +76,7 @@ public class Cart implements Serializable {
         cartItem.incrementQuantity();
     }
 
+    @Override
     public Item removeItemById(String itemId) {
         CartItem cartItem = (CartItem) itemMap.remove(itemId);
         if (cartItem == null) {
@@ -80,16 +87,19 @@ public class Cart implements Serializable {
         }
     }
 
+    @Override
     public void incrementQuantityByItemId(String itemId) {
         CartItem cartItem = (CartItem) itemMap.get(itemId);
         cartItem.incrementQuantity();
     }
 
+    @Override
     public void setQuantityByItemId(String itemId, int quantity) {
         CartItem cartItem = (CartItem) itemMap.get(itemId);
         cartItem.setQuantity(quantity);
     }
 
+    @Override
     public BigDecimal getSubTotal() {
         BigDecimal subTotal = new BigDecimal("0");
         Iterator<CartItem> items = getAllCartItems();

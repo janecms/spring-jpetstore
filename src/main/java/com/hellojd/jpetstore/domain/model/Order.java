@@ -300,7 +300,7 @@ public class Order implements Serializable {
         return lineItems;
     }
 
-    public void initOrder(Account account, Cart cart) {
+    public void initOrder(Account account, ICart cart) {
 
         username = account.getUsername();
         orderDate = new Date();
