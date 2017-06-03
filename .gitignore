@@ -14,3 +14,6 @@ mecab-ipadic*
 *.iws
 .idea
 .DS_Store
+
+.idea/*
+target/*
