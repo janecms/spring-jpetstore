@@ -1,6 +1,6 @@
 # spring-jpetstore
 
-================
+------
 
 fock from [spring-jpetstore](https://github.com/making/spring-jpetstore)
 
@@ -32,10 +32,17 @@ fock from [spring-jpetstore](https://github.com/making/spring-jpetstore)
   > | item  | 产品扩展信息(购买单位)|
   > | inventory  | 库存|
   > | sequence  | order seq|
-================
+
+----
 ## 分支介绍
 
 - master : mvc XML配置
 
 - mvc-annotation:mvc annotation配置
+
+- distribute :分布式拆分多个模块
+
+- dubbo :dubbo分布式服务版本
+
+-springboot :springboot版本
 
