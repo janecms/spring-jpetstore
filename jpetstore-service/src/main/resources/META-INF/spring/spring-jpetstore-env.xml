@@ -22,7 +22,7 @@
     </bean>
 
     <bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
-        <constructor-arg name="realDataSource" ref="realDataSource" />
+        <constructor-arg  ref="realDataSource" />
     </bean>
 
     <!-- <jee:jndi-lookup id="dataSource" jndi-name="jdbc/dataSource"></jee:jndi-lookup> -->

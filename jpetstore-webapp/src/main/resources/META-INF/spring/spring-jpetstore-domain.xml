@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
-    xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://code.alibabatech.com/schema/dubbo        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:property-placeholder
         location="classpath*:META-INF/spring/*.properties" />
+    <!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+    <dubbo:application name="jpetstore-webapp"  />
+    <!-- 使用multicast广播注册中心暴露发现服务地址 -->
+    <dubbo:protocol name="dubbo" port="20880" />
+
+    <dubbo:registry address="zookeeper://192.168.163.146:2181" />
+
+    <dubbo:reference id="accountService" interface="com.hellojd.jpetstore.domain.service.account.AccountService"  />
+    <dubbo:reference id="catalogService" interface="com.hellojd.jpetstore.domain.service.catalog.CatalogService" />
+    <dubbo:reference id="orderService" interface="com.hellojd.jpetstore.domain.service.order.OrderService" />
 
     <context:component-scan base-package="com.hellojd.jpetstore.domain" />
     <context:component-scan base-package="com.hellojd.jpetstore.config" />
-    <tx:annotation-driven />
-
-    <import resource="classpath:META-INF/spring/spring-jpetstore-infra.xml" />
 </beans>

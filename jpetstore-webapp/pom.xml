@@ -12,6 +12,29 @@
     <url>http://maven.apache.org</url>
     <build>
         <finalName>jpetstore-webapp</finalName>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>
+                                ${project.build.directory}
+                            </outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
     </build>
     <dependencies>
         <dependency>
@@ -33,10 +56,6 @@
         <dependency>
             <groupId>com.hellojd.jpetstore</groupId>
             <artifactId>jpetstore-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.hellojd.jpetstore</groupId>
-            <artifactId>jpetstore-service</artifactId>
         </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
@@ -100,6 +119,32 @@
         <dependency>
             <groupId>jp.sf.amateras.functions</groupId>
             <artifactId>functions</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+            <exclusions>
+                <exclusion>
+                    <artifactId>spring-beans</artifactId>
+                    <groupId>org.springframework</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.sgroschupf</groupId>
+            <artifactId>zkclient</artifactId>
         </dependency>
     </dependencies>
 </project>
