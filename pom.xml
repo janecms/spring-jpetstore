@@ -7,145 +7,145 @@
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
     <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <configuration>
-                    <includes>
-                        <include>**/*Test.java</include>
-                    </includes>
-                </configuration>
-            </plugin>
+    <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>com.google.code.maven-license-plugin</groupId>
+                    <artifactId>maven-license-plugin</artifactId>
+                    <version>${com.google.code.maven-license-plugin.version}</version>
+                    <configuration>
+                        <header>src/etc/header.txt</header>
+                        <includes>
+                            <include>src/**/*.java</include>
+                        </includes>
+                        <encoding>${encoding}</encoding>
+                        <headerDefinitions>
+                            <headerDefinition>src/etc/header-definition.xml</headerDefinition>
+                        </headerDefinitions>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${org.apache.maven.plugins.maven-compiler-plugin.version}</version>
+                    <configuration>
+                        <source>${java-version}</source>
+                        <target>${java-version}</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${org.apache.maven.plugins.maven-dependency-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>install</id>
+                            <phase>install</phase>
+                            <goals>
+                                <goal>sources</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-eclipse-plugin</artifactId>
+                    <version>${org.apache.maven.plugins.version}</version>
+                    <configuration>
+                        <wtpversion>2.0</wtpversion>
+                        <downloadSources>true</downloadSources>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>${org.apache.maven.plugins.maven-resources-plugin.version}</version>
+                    <configuration>
+                        <encoding>${encoding}</encoding>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${org.apache.maven.plugins.maven-source-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>source-jar</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>jar</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${org.apache.maven.plugins.maven-war-plugin.version}</version>
+                    <configuration>
+                        <warName>${project.artifactId}</warName>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.tomcat.maven</groupId>
+                    <artifactId>tomcat7-maven-plugin</artifactId>
+                    <version>${org.apache.tomcat.maven.version}</version>
+                    <configuration>
+                        <uriEncoding>UTF-8</uriEncoding>
+                    </configuration>
+                </plugin>
+                <!--
+                                <plugin>
+                                    <groupId>org.codehaus.cargo</groupId>
+                                    <artifactId>cargo-maven2-plugin</artifactId>
+                                    <version>1.6.3</version>
+                                    <configuration>
+                                        <container>
+                                            <containerId>tomcat7x</containerId>
+                                            <home>D:\apache-tomcat-7.0.67</home>
+                                            <zipUrlInstaller>
+                                                <url>${cargo.maven.containerUrl}</url>
+                                                <downloadDir>${project.build.directory}/downloads</downloadDir>
+                                                <extractDir>${project.build.directory}/extracts</extractDir>
+                                            </zipUrlInstaller>
 
-            <plugin>
-                <groupId>com.google.code.maven-license-plugin</groupId>
-                <artifactId>maven-license-plugin</artifactId>
-                <version>${com.google.code.maven-license-plugin.version}</version>
-                <configuration>
-                    <header>src/etc/header.txt</header>
-                    <includes>
-                        <include>src/**/*.java</include>
-                    </includes>
-                    <encoding>${encoding}</encoding>
-                    <headerDefinitions>
-                        <headerDefinition>src/etc/header-definition.xml</headerDefinition>
-                    </headerDefinitions>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${org.apache.maven.plugins.maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>${java-version}</source>
-                    <target>${java-version}</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>${org.apache.maven.plugins.maven-dependency-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>install</id>
-                        <phase>install</phase>
-                        <goals>
-                            <goal>sources</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <version>${org.apache.maven.plugins.version}</version>
-                <configuration>
-                    <wtpversion>2.0</wtpversion>
-                    <downloadSources>true</downloadSources>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>${org.apache.maven.plugins.maven-resources-plugin.version}</version>
-                <configuration>
-                    <encoding>${encoding}</encoding>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-source-plugin</artifactId>
-                <version>${org.apache.maven.plugins.maven-source-plugin.version}</version>
-                <executions>
-                    <execution>
-                        <id>source-jar</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>jar</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>${org.apache.maven.plugins.maven-war-plugin.version}</version>
-                <configuration>
-                    <warName>${project.artifactId}</warName>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.tomcat.maven</groupId>
-                <artifactId>tomcat7-maven-plugin</artifactId>
-                <version>${org.apache.tomcat.maven.version}</version>
-                <configuration>
-                    <uriEncoding>UTF-8</uriEncoding>
-                </configuration>
-            </plugin>
-<!--
+                                        </container>
+                                        <configuration>
+                                                <type>existing</type>
+                                                <home>D:\apache-tomcat-7.0.67</home>
+                                            <properties>
+                                                <cargo.servlet.port>8088</cargo.servlet.port>
+                                            </properties>
+                                        </configuration>
+                                    </configuration>
+                                </plugin>
+                -->
                 <plugin>
                     <groupId>org.codehaus.cargo</groupId>
                     <artifactId>cargo-maven2-plugin</artifactId>
-                    <version>1.6.3</version>
+                    <version>1.4.9</version>
                     <configuration>
                         <container>
                             <containerId>tomcat7x</containerId>
                             <home>D:\apache-tomcat-7.0.67</home>
-                            <zipUrlInstaller>
-                                <url>${cargo.maven.containerUrl}</url>
-                                <downloadDir>${project.build.directory}/downloads</downloadDir>
-                                <extractDir>${project.build.directory}/extracts</extractDir>
-                            </zipUrlInstaller>
-
                         </container>
                         <configuration>
-                                <type>existing</type>
-                                <home>D:\apache-tomcat-7.0.67</home>
-                            <properties>
-                                <cargo.servlet.port>8088</cargo.servlet.port>
-                            </properties>
+                            <type>existing</type>
+                            <home>D:\apache-tomcat-7.0.67</home>
                         </configuration>
                     </configuration>
                 </plugin>
--->
-            <plugin>
-                <groupId>org.codehaus.cargo</groupId>
-                <artifactId>cargo-maven2-plugin</artifactId>
-                <version>1.4.9</version>
-                <configuration>
-                    <container>
-                        <containerId>tomcat7x</containerId>
-                        <home>D:\apache-tomcat-7.0.67</home>
-                    </container>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
                     <configuration>
-                        <type>existing</type>
-                        <home>D:\apache-tomcat-7.0.67</home>
+                        <includes>
+                            <include>**/*Test.java</include>
+                        </includes>
+                            <skipTests>true</skipTests>
                     </configuration>
-                </configuration>
-            </plugin>
-        </plugins>
-    <pluginManagement>
+                </plugin>
+            </plugins>
     </pluginManagement>
     </build>
     <modules>
@@ -169,166 +169,6 @@
         </repository>
     </repositories>
     <dependencies>
-        <!-- == Begin Google == -->
-        <dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>${com.google.guava.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>com.google.code.findbugs</groupId>
-                    <artifactId>jsr305</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!-- == End Google == -->
-
-        <!-- == Begin Apache Commons == -->
-        <dependency>
-            <groupId>commons-beanutils</groupId>
-            <artifactId>commons-beanutils</artifactId>
-            <version>${commons-beanutils.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>commons-collections</groupId>
-            <artifactId>commons-collections</artifactId>
-            <version>${commons-collections.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>${commons-io.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>commons-dbcp</groupId>
-            <artifactId>commons-dbcp</artifactId>
-            <version>${commons-dbcp.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.39</version>
-        </dependency>
-        <!--
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>1.4.185</version>
-        </dependency>
-        -->
-        <dependency>
-            <groupId>commons-pool</groupId>
-            <artifactId>commons-pool</artifactId>
-            <version>${commons-pool.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang.version}</version>
-        </dependency>
-        <!-- == End Apache Commons == -->
-
-        <!-- == Begin Dozer== -->
-        <dependency>
-            <groupId>net.sf.dozer</groupId>
-            <artifactId>dozer-spring</artifactId>
-            <version>${dozer.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>net.sf.dozer</groupId>
-            <artifactId>dozer</artifactId>
-            <version>${dozer.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-log4j12</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>jcl-over-slf4j</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!-- == End Dozer== -->
-
-        <!-- == Begin Joda-Time == -->
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <version>${joda-time.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time-jsptags</artifactId>
-            <version>${joda-time.joda-time-jsptags.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.jadira.usertype</groupId>
-            <artifactId>usertype.core</artifactId>
-            <version>${jadira-usertype-core.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.hibernate</groupId>
-                    <artifactId>hibernate-entitymanager</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.slf4j</groupId>
-                    <artifactId>slf4j-api</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.joda</groupId>
-                    <artifactId>joda-money</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <!-- == End Joda-Time == -->
-
-        <!-- == Begin AspectJ == -->
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjrt</artifactId>
-            <version>${org.aspectj-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.aspectj</groupId>
-            <artifactId>aspectjweaver</artifactId>
-            <version>${org.aspectj-version}</version>
-        </dependency>
-        <!-- == End AspectJ == -->
-
-        <!-- == Begin Jackson == -->
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-core-asl</artifactId>
-            <version>${org.codehaus.jackson.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.codehaus.jackson</groupId>
-            <artifactId>jackson-mapper-asl</artifactId>
-            <version>${org.codehaus.jackson.version}</version>
-        </dependency>
-        <!-- == End Jackson == -->
-
-        <!-- == End JPA == -->
-
-        <!-- == Begin BeanValidation == -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${org.hibernate.hibernate-validator.version}</version>
-        </dependency>
-        <!-- == End BeanValidation == -->
-
         <!-- == Begin Logging == -->
         <!-- SLF4J -->
         <dependency>
@@ -354,387 +194,560 @@
             <version>${org.lazyluke.version}</version>
         </dependency>
         <!-- == End Logging == -->
-
-        <!-- == Begin Spring == -->
-        <!-- Spring Framework -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>${org.springframework-version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aspects</artifactId>
-            <version>${org.springframework-version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
-            <version>${org.springframework-version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>javax.validation</groupId>
-            <artifactId>validation-api</artifactId>
-            <version>1.1.0.Final</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-tx</artifactId>
-            <version>${org.springframework-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-context-support</artifactId>
-            <version>${org.springframework-version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-orm</artifactId>
-            <version>${org.springframework-version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <!-- Spring MVC -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${org.springframework-version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <!-- Spring Data -->
-        <dependency>
-            <groupId>org.springframework.data</groupId>
-            <artifactId>spring-data-commons</artifactId>
-            <version>${org.springframework.data.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>spring-beanss</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <groupId>junit</groupId>
-                    <artifactId>junit-dep</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <!-- Spring Security -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>${org.springframework.security.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>spring-jdbc</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-aop</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-web</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-tx</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-context</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-core</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-expression</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-beans</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-core</artifactId>
-            <version>${org.springframework.security.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>spring-jdbc</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-aop</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-web</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-tx</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-context</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-core</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-expression</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-beans</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-taglibs</artifactId>
-            <version>${org.springframework.security.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>spring-jdbc</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-aop</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-web</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-tx</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-context</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-core</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-expression</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-beans</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-web</artifactId>
-            <version>${org.springframework.security.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>spring-jdbc</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-aop</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-web</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-tx</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-context</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-core</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-expression</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>spring-beans</artifactId>
-                    <groupId>org.springframework</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <!-- Spring Test -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${org.springframework-version}</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- == End Spring == -->
-
-        <!-- == Begin Tiles == -->
-        <dependency>
-            <groupId>org.apache.tiles</groupId>
-            <artifactId>tiles-core</artifactId>
-            <version>${org.apache.tiles.version}</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>commons-logging</artifactId>
-                    <groupId>commons-logging</groupId>
-                </exclusion>
-                <exclusion>
-                    <artifactId>jcl-over-slf4j</artifactId>
-                    <groupId>org.slf4j</groupId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tiles</groupId>
-            <artifactId>tiles-jsp</artifactId>
-            <version>${org.apache.tiles.version}</version>
-        </dependency>
-        <!-- == End Tiles == -->
-
-        <!-- == Begin Other JavaEE/SE APIs == -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>jstl</artifactId>
-            <version>${javax.servlet.jstl.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet.jsp</groupId>
-            <artifactId>jsp-api</artifactId>
-            <version>2.1</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.transaction</groupId>
-            <artifactId>jta</artifactId>
-            <version>${javax.transaction.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
-            <version>${javax.inject.version}</version>
-        </dependency>
-        <!-- == End Other JavaEE/SE APIs == -->
-
-        <!-- MyBatis -->
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis</artifactId>
-            <version>3.2.5</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis</groupId>
-            <artifactId>mybatis-spring</artifactId>
-            <version>1.2.2</version>
-        </dependency>
-
-        <!-- == Begin Unit Test == -->
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>${org.mockito.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <!-- <dependency> -->
-        <!-- <groupId>org.seleniumhq.selenium</groupId> -->
-        <!-- <artifactId>selenium-java</artifactId> -->
-        <!-- <version>${selenium.version}</version> -->
-        <!-- <scope>test</scope> -->
-        <!-- </dependency> -->
-        <!-- == End Unit Test == -->
-
-        <!-- == Begin Amateras == -->
-        <!-- == End Amateras == -->
-
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-            <version>${com.h2database.version}</version>
-            <!-- <scope>provided</scope> -->
-        </dependency>
-        <!-- == Begin Tomcat == -->
-        <!-- Servlet API 3.0 & JSP API 2.2 -->
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-servlet-api</artifactId>
-            <version>${tomcat.api.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.tomcat</groupId>
-            <artifactId>tomcat-jsp-api</artifactId>
-            <version>${tomcat.api.version}</version>
-            <scope>provided</scope>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.1.0</version>
-        </dependency>
-        <!-- == End Tomcat == -->
-        <dependency>
-            <groupId>jp.sf.amateras.functions</groupId>
-            <artifactId>functions</artifactId>
-            <version>${jp.sf.amateras.functions.version}</version>
-        </dependency>
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.hellojd.jpetstore</groupId>
+                <artifactId>jpetstore-service</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>com.hellojd.jpetstore</groupId>
+                <artifactId>jpetstore-api</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+            <!-- == Begin Google == -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${com.google.guava.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>com.google.code.findbugs</groupId>
+                        <artifactId>jsr305</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- == End Google == -->
+
+            <!-- == Begin Apache Commons == -->
+            <dependency>
+                <groupId>commons-beanutils</groupId>
+                <artifactId>commons-beanutils</artifactId>
+                <version>${commons-beanutils.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>commons-logging</artifactId>
+                        <groupId>commons-logging</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>commons-collections</groupId>
+                <artifactId>commons-collections</artifactId>
+                <version>${commons-collections.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-dbcp</groupId>
+                <artifactId>commons-dbcp</artifactId>
+                <version>${commons-dbcp.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>5.1.39</version>
+            </dependency>
+            <!--
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>1.4.185</version>
+            </dependency>
+            -->
+            <dependency>
+                <groupId>commons-pool</groupId>
+                <artifactId>commons-pool</artifactId>
+                <version>${commons-pool.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang.version}</version>
+            </dependency>
+            <!-- == End Apache Commons == -->
+
+            <!-- == Begin Dozer== -->
+            <dependency>
+                <groupId>net.sf.dozer</groupId>
+                <artifactId>dozer-spring</artifactId>
+                <version>${dozer.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.dozer</groupId>
+                <artifactId>dozer</artifactId>
+                <version>${dozer.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>jcl-over-slf4j</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- == End Dozer== -->
+
+            <!-- == Begin Joda-Time == -->
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda-time.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time-jsptags</artifactId>
+                <version>${joda-time.joda-time-jsptags.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.jadira.usertype</groupId>
+                <artifactId>usertype.core</artifactId>
+                <version>${jadira-usertype-core.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.hibernate</groupId>
+                        <artifactId>hibernate-entitymanager</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-api</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.joda</groupId>
+                        <artifactId>joda-money</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <!-- == End Joda-Time == -->
+
+            <!-- == Begin AspectJ == -->
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjrt</artifactId>
+                <version>${org.aspectj-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${org.aspectj-version}</version>
+            </dependency>
+            <!-- == End AspectJ == -->
+
+            <!-- == Begin Jackson == -->
+            <dependency>
+                <groupId>org.codehaus.jackson</groupId>
+                <artifactId>jackson-core-asl</artifactId>
+                <version>${org.codehaus.jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.codehaus.jackson</groupId>
+                <artifactId>jackson-mapper-asl</artifactId>
+                <version>${org.codehaus.jackson.version}</version>
+            </dependency>
+            <!-- == End Jackson == -->
+
+            <!-- == End JPA == -->
+
+            <!-- == Begin BeanValidation == -->
+            <dependency>
+                <groupId>org.hibernate</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${org.hibernate.hibernate-validator.version}</version>
+            </dependency>
+            <!-- == End BeanValidation == -->
+
+            <!-- == Begin Spring == -->
+            <!-- Spring Framework -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${org.springframework-version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>commons-logging</artifactId>
+                        <groupId>commons-logging</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aspects</artifactId>
+                <version>${org.springframework-version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>commons-logging</artifactId>
+                        <groupId>commons-logging</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${org.springframework-version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>commons-logging</artifactId>
+                        <groupId>commons-logging</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>1.1.0.Final</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${org.springframework-version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context-support</artifactId>
+                <version>${org.springframework-version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>commons-logging</artifactId>
+                        <groupId>commons-logging</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-orm</artifactId>
+                <version>${org.springframework-version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>commons-logging</artifactId>
+                        <groupId>commons-logging</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- Spring MVC -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${org.springframework-version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>commons-logging</artifactId>
+                        <groupId>commons-logging</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- Spring Data -->
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-commons</artifactId>
+                <version>${org.springframework.data.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>spring-beanss</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>junit</groupId>
+                        <artifactId>junit-dep</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- Spring Security -->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-config</artifactId>
+                <version>${org.springframework.security.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>spring-jdbc</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-aop</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-web</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-tx</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-context</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-core</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-expression</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-beans</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-core</artifactId>
+                <version>${org.springframework.security.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>spring-jdbc</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-aop</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-web</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-tx</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-context</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-core</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-expression</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-beans</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-taglibs</artifactId>
+                <version>${org.springframework.security.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>spring-jdbc</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-aop</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-web</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-tx</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-context</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-core</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-expression</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-beans</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-web</artifactId>
+                <version>${org.springframework.security.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>spring-jdbc</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-aop</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-web</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-tx</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-context</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-core</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-expression</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>spring-beans</artifactId>
+                        <groupId>org.springframework</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+
+            <!-- Spring Test -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>${org.springframework-version}</version>
+                <scope>test</scope>
+            </dependency>
+            <!-- == End Spring == -->
+
+            <!-- == Begin Tiles == -->
+            <dependency>
+                <groupId>org.apache.tiles</groupId>
+                <artifactId>tiles-core</artifactId>
+                <version>${org.apache.tiles.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <artifactId>commons-logging</artifactId>
+                        <groupId>commons-logging</groupId>
+                    </exclusion>
+                    <exclusion>
+                        <artifactId>jcl-over-slf4j</artifactId>
+                        <groupId>org.slf4j</groupId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tiles</groupId>
+                <artifactId>tiles-jsp</artifactId>
+                <version>${org.apache.tiles.version}</version>
+            </dependency>
+            <!-- == End Tiles == -->
+
+            <!-- == Begin Other JavaEE/SE APIs == -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>jstl</artifactId>
+                <version>${javax.servlet.jstl.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet.jsp</groupId>
+                <artifactId>jsp-api</artifactId>
+                <version>2.1</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.transaction</groupId>
+                <artifactId>jta</artifactId>
+                <version>${javax.transaction.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>javax.inject</groupId>
+                <artifactId>javax.inject</artifactId>
+                <version>${javax.inject.version}</version>
+            </dependency>
+            <!-- == End Other JavaEE/SE APIs == -->
+            <!-- <dependency> -->
+            <!-- <groupId>org.seleniumhq.selenium</groupId> -->
+            <!-- <artifactId>selenium-java</artifactId> -->
+            <!-- <version>${selenium.version}</version> -->
+            <!-- <scope>test</scope> -->
+            <!-- </dependency> -->
+            <!-- == End Unit Test == -->
+
+            <!-- == Begin Amateras == -->
+            <!-- == End Amateras == -->
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>${com.h2database.version}</version>
+                <!-- <scope>provided</scope> -->
+            </dependency>
+            <dependency>
+                <groupId>org.apache.tomcat</groupId>
+                <artifactId>tomcat-jsp-api</artifactId>
+                <version>${tomcat.api.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <!-- == End Tomcat == -->
+            <dependency>
+                <groupId>jp.sf.amateras.functions</groupId>
+                <artifactId>functions</artifactId>
+                <version>${jp.sf.amateras.functions.version}</version>
+            </dependency>
+            <!-- MyBatis -->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>3.2.5</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis-spring</artifactId>
+                <version>1.2.2</version>
+            </dependency>
+            <!-- == Begin Unit Test == -->
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-all</artifactId>
+                <version>${org.mockito.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <!-- == Begin Tomcat == -->
+            <!-- Servlet API 3.0 & JSP API 2.2 -->
+            <dependency>
+                <groupId>org.apache.tomcat</groupId>
+                <artifactId>tomcat-servlet-api</artifactId>
+                <version>${tomcat.api.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>3.1.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <properties>
         <!-- == Google == -->
         <com.google.guava.version>14.0.1</com.google.guava.version>
