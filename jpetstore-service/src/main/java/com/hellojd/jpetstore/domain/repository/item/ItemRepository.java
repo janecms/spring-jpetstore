@@ -17,6 +17,7 @@
 package com.hellojd.jpetstore.domain.repository.item;
 
 import com.hellojd.jpetstore.domain.model.Item;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 import java.util.Map;
@@ -24,6 +25,7 @@ import java.util.Map;
 /**
  * @author Eduardo Macarron
  */
+@Mapper
 public interface ItemRepository {
 
     void updateInventoryQuantity(Map<String, Object> param);

@@ -17,12 +17,14 @@
 package com.hellojd.jpetstore.domain.repository.product;
 
 import com.hellojd.jpetstore.domain.model.Product;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 /**
  * @author Eduardo Macarron
  */
+@Mapper
 public interface ProductRepository {
 
     List<Product> getProductListByCategory(String categoryId);

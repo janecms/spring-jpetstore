@@ -17,12 +17,14 @@
 package com.hellojd.jpetstore.domain.repository.order;
 
 import com.hellojd.jpetstore.domain.model.Order;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 /**
  * @author Eduardo Macarron
  */
+@Mapper
 public interface OrderRepository {
 
     List<Order> getOrdersByUsername(String username);

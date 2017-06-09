@@ -17,12 +17,14 @@
 package com.hellojd.jpetstore.domain.repository.item;
 
 import com.hellojd.jpetstore.domain.model.LineItem;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 /**
  * @author Eduardo Macarron
  */
+@Mapper
 public interface LineItemRepository {
 
     List<LineItem> getLineItemsByOrderId(int orderId);

@@ -17,10 +17,13 @@
 package com.hellojd.jpetstore.domain.repository.account;
 
 import com.hellojd.jpetstore.domain.model.Account;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 /**
  * @author Eduardo Macarron
  */
+@Repository
 public interface AccountRepository {
 
     Account getAccountByUsername(String username);

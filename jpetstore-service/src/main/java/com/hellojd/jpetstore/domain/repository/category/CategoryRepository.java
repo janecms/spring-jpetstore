@@ -17,12 +17,14 @@
 package com.hellojd.jpetstore.domain.repository.category;
 
 import com.hellojd.jpetstore.domain.model.Category;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
 /**
  * @author Eduardo Macarron
  */
+@Mapper
 public interface CategoryRepository {
 
     List<Category> getCategoryList();

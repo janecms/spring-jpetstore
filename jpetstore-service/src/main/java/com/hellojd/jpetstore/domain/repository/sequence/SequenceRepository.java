@@ -17,10 +17,12 @@
 package com.hellojd.jpetstore.domain.repository.sequence;
 
 import com.hellojd.jpetstore.domain.model.Sequence;
+import org.apache.ibatis.annotations.Mapper;
 
 /**
  * @author Eduardo Macarron
  */
+@Mapper
 public interface SequenceRepository {
 
     Sequence getSequence(Sequence sequence);
