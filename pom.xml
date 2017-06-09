@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.3.RELEASE</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.hellojd.jpetstore</groupId>
     <artifactId>j2ee-jpetstore</artifactId>
@@ -147,11 +152,30 @@
                 </plugin>
             </plugins>
     </pluginManagement>
+    <plugins>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <version>3.0.1</version>
+            <configuration>
+                <attach>true</attach>
+            </configuration>
+            <executions>
+                <execution>
+                    <phase>compile</phase>
+                    <goals>
+                        <goal>jar</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+    </plugins>
     </build>
     <modules>
         <module>jpetstore-api</module>
         <module>jpetstore-service</module>
         <module>jpetstore-webapp</module>
+        <module>jpetstore-webappboot</module>
     </modules>
     <repositories>
         <repository>
@@ -170,28 +194,17 @@
     </repositories>
     <dependencies>
         <!-- == Begin Logging == -->
-        <!-- SLF4J -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>jcl-over-slf4j</artifactId>
-            <version>${org.slf4j-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${org.slf4j-version}</version>
-        </dependency>
-        <!-- Logback -->
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>${ch.qos.logback.version}</version>
-        </dependency>
         <!-- Log4JDBC -->
         <dependency>
             <groupId>org.lazyluke</groupId>
             <artifactId>log4jdbc-remix</artifactId>
             <version>${org.lazyluke.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>junit</groupId>
+                    <artifactId>junit</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <!-- == End Logging == -->
     </dependencies>
@@ -330,7 +343,6 @@
                 </exclusions>
             </dependency>
             <!-- == End Joda-Time == -->
-
             <!-- == Begin AspectJ == -->
             <dependency>
                 <groupId>org.aspectj</groupId>
@@ -695,14 +707,6 @@
                 <!-- <scope>provided</scope> -->
             </dependency>
             <dependency>
-                <groupId>org.apache.tomcat</groupId>
-                <artifactId>tomcat-jsp-api</artifactId>
-                <version>${tomcat.api.version}</version>
-                <scope>provided</scope>
-            </dependency>
-
-            <!-- == End Tomcat == -->
-            <dependency>
                 <groupId>jp.sf.amateras.functions</groupId>
                 <artifactId>functions</artifactId>
                 <version>${jp.sf.amateras.functions.version}</version>
@@ -711,7 +715,7 @@
             <dependency>
                 <groupId>org.mybatis</groupId>
                 <artifactId>mybatis</artifactId>
-                <version>3.2.5</version>
+                <version>3.4.4</version>
             </dependency>
             <dependency>
                 <groupId>org.mybatis</groupId>
@@ -731,19 +735,47 @@
                 <version>${org.mockito.version}</version>
                 <scope>test</scope>
             </dependency>
-
-            <!-- == Begin Tomcat == -->
-            <!-- Servlet API 3.0 & JSP API 2.2 -->
             <dependency>
-                <groupId>org.apache.tomcat</groupId>
-                <artifactId>tomcat-servlet-api</artifactId>
-                <version>${tomcat.api.version}</version>
-                <scope>provided</scope>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-aop</artifactId>
+                <version>1.5.3.RELEASE</version>
             </dependency>
             <dependency>
-                <groupId>javax.servlet</groupId>
-                <artifactId>javax.servlet-api</artifactId>
-                <version>3.1.0</version>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>1.3.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-jdbc</artifactId>
+                <version>1.5.3.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-security</artifactId>
+                <version>1.5.3.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <version>1.5.3.RELEASE</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-thymeleaf</artifactId>
+                <version>1.5.3.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>1.5.3.RELEASE</version>
+            </dependency>
+            <dependency>
+                <groupId>org.thymeleaf.extras</groupId>
+                <artifactId>thymeleaf-extras-tiles2-spring4</artifactId>
+                <version>2.1.1.RELEASE</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -793,7 +825,7 @@
         <!-- == database == -->
         <com.h2database.version>1.3.156</com.h2database.version>
         <!-- == JUnit == -->
-        <junit.version>4.7</junit.version>
+        <junit.version>4.12</junit.version>
         <org.mockito.version>1.9.0</org.mockito.version>
         <selenium.version>2.32.0</selenium.version>
         <!-- == Maven Plugins == -->

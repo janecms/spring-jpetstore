@@ -42,3 +42,13 @@ fock from [spring-jpetstore](https://github.com/making/spring-jpetstore)
 
 - distribute :分布式拆分多个模块
 
+-------------------------
+## Spring BOOT
+http://projects.spring.io/spring-boot/
+https://git.oschina.net/didispace
+
+### Thymeleaf
+- http://www.thymeleaf.org/
+- http://www.thymeleaf.org/documentation.html
+- https://www.mkyong.com/spring-boot/spring-boot-hello-world-example-thymeleaf/
+
