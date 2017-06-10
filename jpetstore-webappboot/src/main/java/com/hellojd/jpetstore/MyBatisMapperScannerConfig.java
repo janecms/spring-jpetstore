@@ -1,4 +1,4 @@
-package hello;
+package com.hellojd.jpetstore;
 
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;

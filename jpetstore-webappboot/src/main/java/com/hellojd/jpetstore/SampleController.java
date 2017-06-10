@@ -1,6 +1,5 @@
-package hello;
+package com.hellojd.jpetstore;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.*;
 import org.springframework.boot.autoconfigure.*;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
@@ -8,8 +7,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.*;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 @ComponentScan

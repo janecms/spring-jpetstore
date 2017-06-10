@@ -1,4 +1,4 @@
-package hello;
+package com.hellojd.jpetstore;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
