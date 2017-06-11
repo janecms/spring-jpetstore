@@ -42,10 +42,15 @@ fock from [spring-jpetstore](https://github.com/making/spring-jpetstore)
 
 - distribute :分布式拆分多个模块
 
+- springboot:springboot+mybatis+springmvc
+
+- springboot-redis:持久层采用redis
+
 -------------------------
 ## Spring BOOT
-http://projects.spring.io/spring-boot/
-https://git.oschina.net/didispace
+- http://projects.spring.io/spring-boot/
+- https://git.oschina.net/didispace
+- http://blog.didispace.com/
 
 ### Thymeleaf
 - http://www.thymeleaf.org/
