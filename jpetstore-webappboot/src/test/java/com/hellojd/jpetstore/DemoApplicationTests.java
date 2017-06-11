@@ -13,14 +13,12 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class DemoApplicationTests {
 	@Autowired
 	AccountService accountService;
-	CatalogService catalogService;
 	@Test
 	public void contextLoads() {
 //		List<Category> categoryList = catalogService.getCategoryList();
 //		for(Category cat:categoryList){
 //			System.out.println(cat);
 //		}
-		System.out.println(accountService);
 	}
 
 }

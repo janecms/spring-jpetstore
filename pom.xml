@@ -174,7 +174,6 @@
     <modules>
         <module>jpetstore-api</module>
         <module>jpetstore-service</module>
-        <module>jpetstore-webapp</module>
         <module>jpetstore-webappboot</module>
     </modules>
     <repositories>
