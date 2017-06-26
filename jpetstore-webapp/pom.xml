@@ -149,6 +149,11 @@
             </exclusions>
         </dependency>
         <dependency>
+            <artifactId>log4j</artifactId>
+            <groupId>log4j</groupId>
+            <version>1.2.17</version>
+        </dependency>
+        <dependency>
             <groupId>com.github.sgroschupf</groupId>
             <artifactId>zkclient</artifactId>
             <exclusions>
