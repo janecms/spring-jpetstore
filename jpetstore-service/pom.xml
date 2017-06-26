@@ -38,6 +38,22 @@
                  </executions>
              </plugin>
              <plugin>
+                 <artifactId>maven-assembly-plugin</artifactId>
+                 <version>2.2</version>
+                 <configuration>
+                     <descriptor>src/main/assembly/assembly.xml</descriptor>
+                 </configuration>
+                 <executions>
+                     <execution>
+                         <id>make-assembly</id>
+                         <phase>package</phase>
+                         <goals>
+                             <goal>single</goal>
+                         </goals>
+                     </execution>
+                 </executions>
+             </plugin>
+             <plugin>
                  <groupId>org.apache.maven.plugins</groupId>
                  <artifactId>maven-jar-plugin</artifactId>
                  <configuration>
@@ -52,9 +68,32 @@
                              <Class-Path>.</Class-Path>
                          </manifestEntries>
                      </archive>
+                     <excludes>
+                         <exclude>META-INF/</exclude>
+                         <exclude>database/</exclude>
+                         <exclude>*.properties</exclude>
+                         <exclude>logback.xml</exclude>
+                     </excludes>
                  </configuration>
              </plugin>
          </plugins>
+         <resources>
+             <resource>
+                 <directory>src/main/resources</directory>
+                 <filtering>true</filtering>
+             </resource>
+             <resource>
+                 <directory>src/main/resources</directory>
+                 <filtering>true</filtering>
+                 <includes>
+                     <include>META-INF/</include>
+                     <include>database/</include>
+                     <include>*.properties</include>
+                     <include>logback.xml</include>
+                 </includes>
+                 <targetPath>${project.build.directory}/conf</targetPath>
+             </resource>
+         </resources>
      </build>
     <dependencies>
         <dependency>
