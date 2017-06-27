@@ -183,7 +183,6 @@
             <groupId>com.hellojd.jpetstore</groupId>
             <artifactId>jpetstore-api</artifactId>
         </dependency>
-
     </dependencies>
 
 </project>

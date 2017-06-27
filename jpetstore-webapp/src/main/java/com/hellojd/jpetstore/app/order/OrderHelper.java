@@ -24,11 +24,11 @@ public class OrderHelper {
         UserDetails userDetails = (UserDetails) SecurityContextHolder
                 .getContext().getAuthentication().getPrincipal();
         Account account = userDetails.getAccount();
-
         Order order = new Order();
         order.initOrder(account, cart);
         beanMapper.map(orderForm, order);
-        orderService.insertOrder(order);
+        int orderId = orderService.insertOrder(order);
+        order.setOrderId(orderId);
         return order;
     }
 }
