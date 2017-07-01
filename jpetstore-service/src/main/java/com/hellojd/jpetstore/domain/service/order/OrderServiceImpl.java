@@ -58,7 +58,7 @@ public class OrderServiceImpl implements OrderService {
      */
     @Override
     @Transactional
-    public void insertOrder(Order order) {
+    public int insertOrder(Order order) {
         order.setOrderId(getNextId("ordernum"));
         for (int i = 0; i < order.getLineItems().size(); i++) {
             LineItem lineItem = (LineItem) order.getLineItems().get(i);
@@ -77,6 +77,7 @@ public class OrderServiceImpl implements OrderService {
             lineItem.setOrderId(order.getOrderId());
             lineItemRepository.insertLineItem(lineItem);
         }
+        return order.getOrderId();
     }
 
     /*
