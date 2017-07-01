@@ -10,7 +10,7 @@
     <groupId>com.hellojd.jpetstore</groupId>
     <artifactId>j2ee-jpetstore</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.1-SNAPSHOT</version>
     <build>
     <pluginManagement>
             <plugins>
@@ -212,12 +212,12 @@
             <dependency>
                 <groupId>com.hellojd.jpetstore</groupId>
                 <artifactId>jpetstore-service</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>1.0.1-SNAPSHOT</version>
             </dependency>
             <dependency>
                 <groupId>com.hellojd.jpetstore</groupId>
                 <artifactId>jpetstore-api</artifactId>
-                <version>1.0.0-SNAPSHOT</version>
+                <version>1.0.1-SNAPSHOT</version>
             </dependency>
             <!-- == Begin Google == -->
             <dependency>
