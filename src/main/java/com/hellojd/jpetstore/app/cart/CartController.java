@@ -3,6 +3,7 @@ package com.hellojd.jpetstore.app.cart;
 import javax.inject.Inject;
 
 import com.hellojd.jpetstore.domain.model.Cart;
+import com.hellojd.jpetstore.domain.model.CartItem;
 import com.hellojd.jpetstore.domain.model.ICart;
 import com.hellojd.jpetstore.domain.service.catalog.CatalogService;
 
@@ -11,6 +12,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.Iterator;
 
 @Controller
 @RequestMapping("cart")
@@ -22,7 +25,7 @@ public class CartController {
     protected CatalogService catalogService;
 
     @Inject
-    protected ICart cart;
+    protected Cart cart;
 
     @ModelAttribute
     public CartForm setUpForm() {
@@ -30,7 +33,7 @@ public class CartController {
     }
 
     @ModelAttribute
-    public ICart getCart() {
+    public Cart getCart() {
         return cart;
     }
 

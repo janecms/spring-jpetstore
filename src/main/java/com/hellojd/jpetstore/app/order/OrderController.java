@@ -37,7 +37,7 @@ public class OrderController {
     protected Mapper beanMapper;
 
     @Inject
-    protected ICart cart;
+    protected Cart cart;
 
     static {
         List<String> cardList = new ArrayList<String>();

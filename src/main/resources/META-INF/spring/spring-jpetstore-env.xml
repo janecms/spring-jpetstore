@@ -27,8 +27,10 @@
 
     <!-- <jee:jndi-lookup id="dataSource" jndi-name="jdbc/dataSource"></jee:jndi-lookup> -->
 
+    <!--
     <jdbc:initialize-database data-source="dataSource" ignore-failures="ALL">
-        <jdbc:script location="classpath:/database/${database}/schema.sql" />
-        <jdbc:script location="classpath:/database/${database}/dataload.sql" />
+    <jdbc:script location="classpath:/database/${database}/schema.sql" />
+    <jdbc:script location="classpath:/database/${database}/dataload.sql" />
     </jdbc:initialize-database>
+-->
 </beans>

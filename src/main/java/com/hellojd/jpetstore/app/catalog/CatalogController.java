@@ -30,12 +30,9 @@ import org.springframework.web.servlet.support.RequestContextUtils;
 @RequestMapping("catalog")
 public class CatalogController {
     @Inject
-    CookieLocaleResolver localeResolver;
-
-    @Inject
     protected CatalogService catalogService;
 
-    @RequestMapping()
+    @RequestMapping
     public String main() {
         return "catalog/Main";
     }
